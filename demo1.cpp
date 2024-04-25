@@ -1,86 +1,66 @@
-//Create a abstract class Shape with pure virtual method area
-//Create Rectangle,Circle,Square class..inherit them from Shape class..Override area method.
-//Test these all classes by creating object of respective class.
+//1:Write a program to create student class with data members rollno, marks1,mark2,mark3.
+//Accept data (acceptInfo()) and display  using display member function.
+//Also display total,percentage and grade.
 #include<iostream>
 using namespace std;
-
-class shape{
-    public:
-    shape()
-    {
-        cout<<"---Default Shape---"<<endl;
-    }
-    virtual void area()=0;
-};
-
-class rect:public shape
+class student
 {
-    private: int l,b;
+    int rollno;
+    string name;
+    float m1,m2,m3;
+    float percentage;
+    char grade;
+    int total;
+    void Total()
+    {
+        total=m1+m2+m3;
+    }
+    void calpercentage()
+    {
+        percentage=(total/300)*100;
+    }
+    void calgrade()
+    {
+        if( total>90&&total<100)
+        {
+            cout<<" grade A=A"<<endl;
+        }
+        else if( total>80&&total<90)
+        {
+            cout<<" grade B=B"<<endl;
+        }
+        else if( total>70&&total<60)
+        {
+            cout<<" grade c=c"<<endl;
+        }
+    };
     public:
-    rect()
+    student()
     {
-        cout<<"---Default Rectangle---"<<endl;
-        l=b=0;
+        rollno=10;
+        name="tinku";
+        m1=m2=m3=0;
+        total=0;
     }
-    rect(int l,int b)
+    student( int rollno,string name,float m1,float m2,float m3 )
     {
-        cout<<"---Parameter Rectangle---"<<endl;
-        this->l=l;
-         }
+        this->rollno=rollno;
+        this->name=name;
+        this->m1=m1;
+        this->m2=m2;
+        this->m3=m3;
+        this->total=total;
+    }
 
-    void area()
+    void display()
     {
-        cout<<"Area of Rectangle="<<l*b<<endl;
-    }
-};
-
-class circle:public shape{
-    private: int r;
-    public:
-    circle()
-    {
-        cout<<"------Default circle----"<<endl;
-        r=0;
-    }
-    circle(int r)
-{
-    cout<<" -----paramater circle---"<<endl;
-    this->r=r;
-}
-void area()
-{
-    cout<<"Area of circle="<<3.14*r*r<<endl;
-}
-};
-
-class square:public shape{
-    private:int s;
-    public:
-    square()
-    {
-        cout<<"-----Default square----"<<endl;
-        s=0;
-    }
-    square(int s)
-    {
-        cout<<"------paramater square--"<<endl;
-        this->s=s;
-    }
-    void area()
-    {
-        cout<<" area of square="<<s*s<<endl;
+        cout<<"rollno="<<rollno<<"\nname="<<name<<"\nm1="<<m1<<"\nm2="<<m2<<"\nm3="<<m3<<"\ntotal="<<total<<endl;
     }
 };
 int main()
 {
-    //shape s1;
-    //s1.area();
-     
-     rect r1(5,6);
-     r1.area();
-     circle c1(6);
-     c1.area();
-     square s1(10);
-     s1.area();
-
+    student s1;
+    s1.display();
+    student s2(102,"tinku",80,90,99);
+    s2.display();
 }
